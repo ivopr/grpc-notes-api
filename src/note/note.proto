@@ -1,0 +1,27 @@
+// note/note.proto
+
+syntax = "proto3";
+
+package note;
+
+service NoteController {
+  rpc FindAll (Void) returns (ReturnAll) {}
+  rpc FindOne (FindOne) returns (Note) {}
+  rpc CreateOne (Note) returns (Note) {}
+}
+
+message FindOne {
+  int32 id = 1;
+}
+
+message Note {
+  optional int32 id = 1;
+  string title = 2;
+  string content = 3;
+}
+
+message ReturnAll {
+  repeated Note notes = 1;
+}
+
+message Void {}
